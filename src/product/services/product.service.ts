@@ -1,7 +1,13 @@
+import mockProduct from './product.mock'
+
+
 export class ProductService {
     urlPlans = '';
     
-    async getPlans() {
-        return await fetch('');
+    async getPhoneData() {
+        return mockProduct;
     }
+
+    
+
 }

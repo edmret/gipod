@@ -4,7 +4,7 @@ import { Theme } from '@material-ui/core';
 
 const useStyles = makeStyles(({ palette, spacing, additionalColors }: Theme) => ({
     content:{
-        background: 'rgb(240, 251, 254)',
+        background: palette.background.paper,
         textAlign: "center"
     },
     header: {
