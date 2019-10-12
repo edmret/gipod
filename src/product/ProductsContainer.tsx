@@ -9,7 +9,7 @@ export default function ProductsContainer() {
 
   //todo mad an iteration for this
   return (
-    <Grid container={true}>
+    <Grid container={true} spacing={2}>
         <Product />
 
         <Product />

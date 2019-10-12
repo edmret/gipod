@@ -14,7 +14,7 @@ const App: React.FC = () => {
 
   return (
     <MuiThemeProvider theme={theme}>
-      <Container maxWidth="sm">
+      <Container>
           <ProductsContainer />
       </Container>
     </MuiThemeProvider>
