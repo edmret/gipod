@@ -9,11 +9,14 @@ const Theme = createMyTheme({
         contrastText: '#FFF'
     },
     secondary: {
-      main: "#3F3F3F",
-      contrastText: "#3F3F3F"
+      dark: '#222222',
+      main: '#3F3F3F',
+      contrastText: '#556566'
     }
   },
-  customPallete: {}
+  additionalColors: {
+    successColor: '#43b055'
+  }
 });
 
 export default Theme;

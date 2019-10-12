@@ -1,92 +1,10 @@
-import { makeStyles, DefaultTheme } from '@material-ui/styles';
+
 import React from 'react';
 import PhoneAndroidIcon from '@material-ui/icons/PhoneAndroid';
 
-
-import { Theme } from '@material-ui/core';
-
+import useStyles from './Product.style';
 
 import { Link, Grid, Typography, Card, CardHeader, CardContent, Button } from '@material-ui/core';
-
-
-const useStyles = makeStyles(({ palette, spacing }: Theme) => ({
-    content:{
-        background: 'rgb(240, 251, 254)',
-        textAlign: "center"
-    },
-    header: {
-        background: palette.primary.main,
-        color: palette.primary.contrastText,
-        '& span': {
-            color: palette.primary.contrastText
-        }
-    },
-
-    priceHighLight: {
-        background: palette.primary.dark,
-        position: "relative",
-        margin: spacing(1, 0),
-        padding: spacing(1, 0),
-        "&:after, &:before":{
-            content: "''",
-            position: "absolute",
-            left: spacing(-2),
-            top: 0,
-            bottom: 0,
-            background: palette.primary.dark,
-            width: spacing(2)
-        },
-        "&:after": {
-            left: 'auto',
-            right: spacing(-2)
-        }
-    },
-
-    highlightIndication: {
-        maxWidth: "5.3rem",
-        textAlign: "left"
-    },
-
-    price: {
-        color: palette.primary.main
-    },
-
-    card: {
-        maxWidth: 270,
-    },
-
-    includedList: {
-        listStyle: "none",
-        marginLeft: 0,
-        padding: 0,
-        textAlign: "left"
-    },
-
-    detaiLink: {
-        display: "block",
-        margin: "0.5rem 0"
-    },
-
-    media: {
-        height: 0,
-        paddingTop: '56.25%', // 16:9
-    },
-    expand: {
-        transform: 'rotate(0deg)',
-        marginLeft: 'auto',
-
-    },
-    expandOpen: {
-        transform: 'rotate(180deg)',
-    },
-    avatar: {
-    },
-
-    icon: {
-        verticalAlign: "center"
-    }
-
-}));
 
 export default function Product() {
 
@@ -111,12 +29,12 @@ export default function Product() {
                         <Typography component="p" variant="body2" className={classes.highlightIndication}>
                             pago mensual:
                         </Typography>
-                        <Typography variant="h4" component="p">
+                        <Typography variant="h4" component="p" className={classes.splitPrice}>
                             $216.58
                         </Typography>
                     </Grid>
 
-                    <Typography variant="h5">
+                    <Typography variant="h5" className={classes.listTitle}>
                         Coberturas incluidas
                     </Typography>
                     <ul className={classes.includedList}>

@@ -1,13 +1,13 @@
 import { Theme } from '@material-ui/core/styles/createMuiTheme';
 import { Breakpoint } from '@material-ui/core/styles/createBreakpoints';
-import { any } from 'prop-types';
+import {AditionalColors} from './types/AditionalColors.interface';
 
 declare module '@material-ui/core/styles/createMuiTheme' {
   interface Theme {
-    customPallete: any
+    additionalColors: AditionalColors
   }
   // allow configuration using `createMuiTheme`
   interface ThemeOptions {
-    customPallete: any
+    additionalColors: AditionalColors
   }
 }
