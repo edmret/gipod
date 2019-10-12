@@ -1,25 +1,23 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import ProductsContainer from './product/ProductsContainer';
+import Container from '@material-ui/core/Container';
+import { MuiThemeProvider } from '@material-ui/core/styles';
+
+import PurpleTheme from './_themes/purple.theme';
+import PinkTheme from './_themes/pink.theme';
 
 const App: React.FC = () => {
+
+  //TODO: make a switchable theme
+  const [theme, setTheme] = React.useState(PurpleTheme);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <MuiThemeProvider theme={theme}>
+      <Container maxWidth="sm">
+          <ProductsContainer />
+      </Container>
+    </MuiThemeProvider>
   );
 }
 
