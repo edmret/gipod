@@ -1,6 +1,5 @@
 import React from 'react';
 import {useStateValue} from '../stores/Store';
-import {IRoute} from '../routes';
 
 import ProductsContainer from '../product/ProductsContainer';
 
@@ -19,14 +18,12 @@ export const StateRouterRender: React.FC<IStateRouteRender> =  ({}) => {
     
     const currentComponent = (route:string) =>{
 
-        console.log('theCurrentRoute', route);
-
         switch(route){
             case '/':
                 return <ProductsContainer />;
         }
 
-        return <div>hjghdgasjhdgsdf</div>
+        return <div></div>
     }
 
     return React.useMemo(

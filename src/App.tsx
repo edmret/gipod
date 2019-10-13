@@ -11,11 +11,6 @@ import {reducer} from './reducers/reducer';
 
 import { StateRouterRender } from './_stateRouter/routerRender';
 
-import {IRoute} from './routes';
-
-import ProductsContainer from './product/ProductsContainer'
-
-
 const initialState:DonWidgetState = {
   imeiDevice: {},
   currentRoute: '/'
