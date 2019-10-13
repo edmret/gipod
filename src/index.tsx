@@ -9,7 +9,7 @@ import * as serviceWorker from './serviceWorker';
 
 
 window['CHUBB_API_RENDER'] = () => {
-    ReactDOM.render(<App />, document.getElementById('root'));
+    ReactDOM.render(<App />, document.getElementById('chubb_partner_widget'));
 };
 
 // If you want your app to work offline and load faster, you can change
