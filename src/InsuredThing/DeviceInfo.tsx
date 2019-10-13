@@ -9,12 +9,6 @@ import { Button, Typography, Slider } from '@material-ui/core';
 import { StateLink } from '../_stateRouter/routerRender'
 
 const useStyles = makeStyles((theme:Theme) => ({
-    container: {
-        display: 'flex',
-        flexWrap: 'wrap',
-        flexDirection: 'row',
-        flex: 1
-    },
     field: {
         width: '100%'
     },
