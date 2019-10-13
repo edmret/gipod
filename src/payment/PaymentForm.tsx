@@ -6,7 +6,7 @@ import {Theme} from '@material-ui/core';
 import { Formik, Field, Form } from 'formik';
 import { TextField } from 'formik-material-ui';
 import {Button} from '@material-ui/core';
-import {StateLink} from '../_stateRouter/routerRender';
+import {StateLink} from '../_stateRouter/routerRender'
 
 const useStyles = makeStyles((theme:Theme) => (
     {
@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme:Theme) => (
     }
   ));
 
-export const UserForm = () => {
+export const PaymentForm = () => {
 
     const classes = useStyles({});
     const [{userInfo}, dispatch] = useStateValue();
@@ -53,6 +53,7 @@ export const UserForm = () => {
             }) => (
                 <form onSubmit={handleSubmit}>
                     {errors.FirstName && touched.FirstName && errors.FirstName}
+                    
                     <Field
                         name="FirstName"
                         label="First Name"
@@ -61,48 +62,17 @@ export const UserForm = () => {
                         margin="normal"
                     />
 
-                    <Field
-                        name="LastName"
-                        label="Last Name"
-                        type="text"
-                        component={TextField}
-                        margin="normal"
-                    />
-
-                    <Field
-                        name="Email"
-                        label="Email"
-                        type="email"
-                        component={TextField}
-                        margin="normal"
-                    />
-
-                    <Field
-                        name="Phone"
-                        label="Phone"
-                        type="text"
-                        component={TextField}
-                        margin="normal"
-                    />
-
-                    <Field
-                        name="BirthDate"
-                        label="BirthDate"
-                        type="date"
-                        component={TextField}
-                        margin="normal"
-                    />
-
-                    <StateLink href="/">
+                    <StateLink href="address-form">
                         <Button variant="contained" color="primary">
                             Previous Step
                         </Button>
                     </StateLink>
-                    <StateLink href="address-form">
+                    <StateLink href="success-payment">
                         <Button variant="contained" color="primary">
-                            Next Step
+                            Send All your Information
                         </Button>
                     </StateLink>
+                    
                 </form>
             )}
             </Formik>

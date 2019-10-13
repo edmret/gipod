@@ -5,8 +5,8 @@ import {makeStyles} from '@material-ui/styles';
 import {Theme} from '@material-ui/core';
 import { Formik, Field, Form } from 'formik';
 import { TextField } from 'formik-material-ui';
-import {Button} from '@material-ui/core';
-import {StateLink} from '../_stateRouter/routerRender';
+import {Button, Typography, Slider} from '@material-ui/core';
+import {StateLink} from '../_stateRouter/routerRender'
 
 const useStyles = makeStyles((theme:Theme) => (
     {
@@ -22,7 +22,31 @@ const useStyles = makeStyles((theme:Theme) => (
     }
   ));
 
-export const UserForm = () => {
+
+  const marks = [
+    {
+      value: 0,
+      label: '16GB',
+    },
+    {
+      value: 50,
+      label: '32GB',
+    },
+    {
+      value: 100,
+      label: '64GB',
+    }
+  ];
+  
+  function valuetext(value) {
+    return `${value}°C`;
+  }
+  
+  function valueLabelFormat(value) {
+    return marks.findIndex(mark => mark.value === value) + 1;
+  }
+
+export const DeviceInfoForm = () => {
 
     const classes = useStyles({});
     const [{userInfo}, dispatch] = useStateValue();
@@ -53,56 +77,34 @@ export const UserForm = () => {
             }) => (
                 <form onSubmit={handleSubmit}>
                     {errors.FirstName && touched.FirstName && errors.FirstName}
+                    
                     <Field
                         name="FirstName"
-                        label="First Name"
+                        label="IMEI"
                         type="text"
                         component={TextField}
                         margin="normal"
                     />
 
-                    <Field
-                        name="LastName"
-                        label="Last Name"
-                        type="text"
-                        component={TextField}
-                        margin="normal"
-                    />
-
-                    <Field
-                        name="Email"
-                        label="Email"
-                        type="email"
-                        component={TextField}
-                        margin="normal"
-                    />
-
-                    <Field
-                        name="Phone"
-                        label="Phone"
-                        type="text"
-                        component={TextField}
-                        margin="normal"
-                    />
-
-                    <Field
-                        name="BirthDate"
-                        label="BirthDate"
-                        type="date"
-                        component={TextField}
-                        margin="normal"
+                    <Typography id="discrete-slider-restrict" gutterBottom>
+                        Restricted values
+                    </Typography>
+                    <Slider
+                        defaultValue={20}
+                        valueLabelFormat={valueLabelFormat}
+                        getAriaValueText={valuetext}
+                        aria-labelledby="discrete-slider-restrict"
+                        step={null}
+                        valueLabelDisplay="auto"
+                        marks={marks}
                     />
 
                     <StateLink href="/">
                         <Button variant="contained" color="primary">
-                            Previous Step
+                            Protect My SmarthPhone
                         </Button>
                     </StateLink>
-                    <StateLink href="address-form">
-                        <Button variant="contained" color="primary">
-                            Next Step
-                        </Button>
-                    </StateLink>
+
                 </form>
             )}
             </Formik>

@@ -15,7 +15,7 @@ import {PhoneInfo} from './UserInfo/PhoneInfo';
 
 const initialState:DonWidgetState = {
   imeiDevice: {},
-  currentRoute: '/',
+  currentRoute: 'device-info',
   userInfo: {
     FirstName: '',
     LastName: '',

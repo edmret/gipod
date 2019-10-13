@@ -40,8 +40,6 @@ const Product: React.FC<IProduct> =  ({product}) => {
 
     const [ {currentRoute}, dispatch ] = useStateValue();
 
-    const handleClick = () => dispatch({type: 'setRoute', currentRoute: 'user-data'});
-
     const paymentMethods = [{
         "PaymentPlanId": 1,
         "Name": "Montly",
