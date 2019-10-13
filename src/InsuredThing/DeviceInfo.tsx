@@ -1,55 +1,55 @@
 import React from 'react';
 
-import {useStateValue} from '../stores/Store';
-import {makeStyles} from '@material-ui/styles';
-import {Theme} from '@material-ui/core';
+import { useStateValue } from '../stores/Store';
+import { makeStyles } from '@material-ui/styles';
+import { Theme, Grid, Paper } from '@material-ui/core';
 import { Formik, Field, Form } from 'formik';
 import { TextField } from 'formik-material-ui';
-import {Button, Typography, Slider} from '@material-ui/core';
-import {StateLink} from '../_stateRouter/routerRender'
+import { Button, Typography, Slider } from '@material-ui/core';
+import { StateLink } from '../_stateRouter/routerRender'
 
-const useStyles = makeStyles((theme:Theme) => (
-    {
-      container: {
+const useStyles = makeStyles((theme:Theme) => ({
+    container: {
         display: 'flex',
-        flexWrap: 'wrap'
-      },
-      field: {
-        marginLeft: theme.spacing(1),
-        marginRight: theme.spacing(1),
-        width: 200
-      }
-    }
-  ));
-
-
-  const marks = [
-    {
-      value: 0,
-      label: '16GB',
+        flexWrap: 'wrap',
+        flexDirection: 'row',
+        flex: 1
     },
-    {
-      value: 50,
-      label: '32GB',
+    field: {
+        width: '100%'
     },
-    {
-      value: 100,
-      label: '64GB',
+    storageslider: {
+        width: '100%',
+        marginTop: 40
+    },
+    callToActionButton: {
+        width: '100%'
     }
-  ];
+}));
+
+const marks = [
+    {
+        value: 16,
+        label: '16GB',
+    }, 
+    {
+        value: 32,
+        label: '32GB',
+    }, 
+    {
+        value: 64,
+        label: '64GB',
+    }
+];
   
-  function valuetext(value) {
-    return `${value}°C`;
-  }
-  
-  function valueLabelFormat(value) {
-    return marks.findIndex(mark => mark.value === value) + 1;
-  }
+function valuetext(value) {
+    return (value / 1000) + ' GB';
+}
 
 export const DeviceInfoForm = () => {
 
     const classes = useStyles({});
-    const [{userInfo, deviceInfo}, dispatch] = useStateValue();
+    const [{deviceInfo}, dispatch] = useStateValue();
 
     return React.useMemo(
         () => (
@@ -66,42 +66,65 @@ export const DeviceInfoForm = () => {
                 values,
                 errors,
                 touched,
-                handleChange,
-                handleBlur,
-                handleSubmit,
-                isSubmitting,
-                /* and other goodies */
+                handleSubmit
             }) => (
                 <form onSubmit={handleSubmit}>
                     {errors.FirstName && touched.FirstName && errors.FirstName}
                     
-                    <Field
-                        name="FirstName"
-                        label="IMEI"
-                        type="text"
-                        component={TextField}
-                        margin="normal"
-                    />
+                    <Grid container spacing={3}>
+                        <Grid item xs={12} sm={6} lg={4}>
+                            <Field className={classes.field}
+                                name="imei"
+                                label="IMEI"
+                                type="text"
+                                component={TextField}
+                                margin="normal"
+                            />
+                        </Grid>
+                        <Grid item xs={12} sm={6} lg={4}>
+                            <Field className={classes.field}
+                                name="platform"
+                                label="Platform"
+                                type="text"
+                                component={TextField}
+                                margin="normal"
+                            />
+                        </Grid>
+                        <Grid item xs={12} sm={6} lg={4}>
+                            <Field className={classes.field}
+                                name="model"
+                                label="Model"
+                                type="text"
+                                component={TextField}
+                                margin="normal"
+                            />
+                        </Grid>
+                        <Grid item xs={12}>
+                            <Typography id="discrete-slider" gutterBottom>
+                                Storage
+                            </Typography>
+                            <Slider className={classes.storageslider}
+                                defaultValue={values.totalstorage / 1000}
+                                getAriaValueText={valuetext}
+                                aria-labelledby="discrete-slider"
+                                step={null}
+                                marks={marks}
+                                min={16}
+                                max={64}
+                            />
+                        </Grid>
+                    </Grid>
 
-                    <Typography id="discrete-slider-restrict" gutterBottom>
-                        Restricted values
-                    </Typography>
-                    <Slider
-                        defaultValue={20}
-                        valueLabelFormat={valueLabelFormat}
-                        getAriaValueText={valuetext}
-                        aria-labelledby="discrete-slider-restrict"
-                        step={null}
-                        valueLabelDisplay="auto"
-                        marks={marks}
-                    />
-
-                    <StateLink href="/">
-                        <Button variant="contained" color="primary">
-                            Protect My SmarthPhone
-                        </Button>
-                    </StateLink>
-
+                    <Grid container justify="center" spacing={3}>
+                        <Grid item xs={12} sm={6} lg={4}>
+                            <StateLink href="/">
+                                <Button className={classes.callToActionButton} variant="contained" color="primary">
+                                    Protect My SmarthPhone
+                                </Button>
+                            </StateLink>
+                        </Grid>
+                    </Grid>
+                    
                 </form>
             )}
             </Formik>

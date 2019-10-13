@@ -27,8 +27,9 @@ window['widgetChubbDevices'] = {
   },
   memory: "5579.45",
   platform: "Android",
-  totalstorage: 64000,
+  totalstorage: 32000,
   uuid: "633565e9eadec2b5",
+  model: "S9+"
 };
 
 
