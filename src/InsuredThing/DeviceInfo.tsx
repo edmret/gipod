@@ -49,20 +49,17 @@ const useStyles = makeStyles((theme:Theme) => (
 export const DeviceInfoForm = () => {
 
     const classes = useStyles({});
-    const [{userInfo}, dispatch] = useStateValue();
+    const [{userInfo, deviceInfo}, dispatch] = useStateValue();
 
     return React.useMemo(
         () => (
         <Formik
-            initialValues={{ ...userInfo }}
+            initialValues={{ ...deviceInfo }}
             validate={values => {
                 return {};
             }}
             onSubmit={(values, { setSubmitting }) => {
-                setTimeout(() => {
-                alert(JSON.stringify(values, null, 2));
-                setSubmitting(false);
-                }, 400);
+                dispatch({ 'type': 'saveDeviceInfo', 'deviceInfo': values });
             }}
             >
             {({

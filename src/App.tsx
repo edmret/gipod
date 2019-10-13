@@ -22,6 +22,9 @@ const initialState:DonWidgetState = {
     Email: '',
     Phone: '',
     BirthDate: ''
+  },
+  deviceInfo: {
+    
   }
 };
 
