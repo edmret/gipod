@@ -1,8 +1,17 @@
 import React, {createContext, useContext, useReducer, Dispatch} from 'react';
 
+export interface IUserInfo{
+  FirstName: string,
+  LastName: string,
+  Email: string,
+  Phone: string,
+  BirthDate: string
+}
+
 export interface DonWidgetState {
     imeiDevice?: any,
-    currentRoute?: string
+    currentRoute?: string,
+    userInfo?: IUserInfo
 }
 
 export const StateContext = createContext({currentRoute: '/'} as DonWidgetState);

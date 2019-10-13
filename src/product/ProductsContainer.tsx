@@ -27,8 +27,6 @@ export default function ProductsContainer() {
 
   const [ {imeiDevice}, dispatch ] = useStateValue();
 
-  console.log("state Prop", imeiDevice);
-
   //TODO: improve this shit
   const _productService = new ProductService();
 
@@ -63,10 +61,6 @@ export default function ProductsContainer() {
   //todo mad an iteration for this
   return (
     <>
-      <Grid container alignItems="center" className={classes.productInfo} alignContent="center">
-          <PhoneAndroidIcon className={classes.phoneIcon} />
-          Asegura tu {imeiDevice.Model && imeiDevice.Model.Name}, 32GB
-      </Grid>
       <Grid container={true} spacing={2}>
           {
             imeiDevice.Plans &&

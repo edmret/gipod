@@ -2,6 +2,7 @@ import React from 'react';
 import {useStateValue} from '../stores/Store';
 
 import ProductsContainer from '../product/ProductsContainer';
+import {UserForm} from '../UserInfo/UserForm';
 
 export interface IStateRouteRender{
     
@@ -18,9 +19,12 @@ export const StateRouterRender: React.FC<IStateRouteRender> =  ({}) => {
     
     const currentComponent = (route:string) =>{
 
+        return <UserForm />;
         switch(route){
             case '/':
                 return <ProductsContainer />;
+            case 'user-data':
+                return <UserForm />
         }
 
         return <div></div>

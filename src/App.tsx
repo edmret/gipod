@@ -11,16 +11,22 @@ import {reducer} from './reducers/reducer';
 
 import { StateRouterRender } from './_stateRouter/routerRender';
 
+import {PhoneInfo} from './UserInfo/PhoneInfo';
+
 const initialState:DonWidgetState = {
   imeiDevice: {},
-  currentRoute: '/'
+  currentRoute: '/',
+  userInfo: {
+    FirstName: '',
+    LastName: '',
+    Email: '',
+    Phone: '',
+    BirthDate: ''
+  }
 };
 
 
 const App: React.FC = () => {
-
-
-
   //TODO: make a switchable theme
   const [theme, setTheme] = React.useState(PurpleTheme);
 
@@ -28,6 +34,7 @@ const App: React.FC = () => {
     <StateProvider initialState={initialState} reducer={reducer}>
       <MuiThemeProvider theme={theme}>
         <Container>
+            <PhoneInfo />
             <StateRouterRender />
         </Container>
       </MuiThemeProvider>

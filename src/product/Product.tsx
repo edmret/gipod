@@ -33,7 +33,7 @@ export interface IProduct{
 
 const Product: React.FC<IProduct> =  ({product}) => {
 
-    const classes = useStyles({});
+    const classes = useStyles({ });
 
     const paymentMethods = [{
         "PaymentPlanId": 1,
@@ -47,7 +47,7 @@ const Product: React.FC<IProduct> =  ({product}) => {
     const currency = "USD";
 
     const montly = (product.TotalPremiumValue * selectedMethod.Factor) / selectedMethod.Months;
-    
+
     return (
         <Grid item={true}>
             <Card className={classes.card}>
