@@ -1,10 +1,13 @@
 
 import React from 'react';
 import PhoneAndroidIcon from '@material-ui/icons/PhoneAndroid';
+import {useStateValue} from '../stores/Store';
 
 import useStyles from './Product.style';
 
 import { Link, Grid, Typography, Card, CardHeader, CardContent, Button } from '@material-ui/core';
+
+import {StateLink} from '../_stateRouter/routerRender'
 
 export interface ICoverage {
     Name: string;
@@ -34,6 +37,10 @@ export interface IProduct{
 const Product: React.FC<IProduct> =  ({product}) => {
 
     const classes = useStyles({ });
+
+    const [ {currentRoute}, dispatch ] = useStateValue();
+
+    const handleClick = () => dispatch({type: 'setRoute', currentRoute: 'user-data'});
 
     const paymentMethods = [{
         "PaymentPlanId": 1,
@@ -89,9 +96,12 @@ const Product: React.FC<IProduct> =  ({product}) => {
                     <Grid container direction="column" justify="center" alignItems="center">
                         <Link className={classes.detaiLink}>Ver coberturas completas</Link>
 
-                        <Button variant="contained" color="primary">
-                            Comprar
-                        </Button>
+                        <StateLink href={"user-data"}>
+                            <Button variant="contained" color="primary">
+                                Comprar
+                            </Button>
+                        </StateLink>
+                        
                     </Grid>
                 </CardContent>
             </Card>

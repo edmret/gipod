@@ -85,9 +85,6 @@ export const UserForm = () => {
                         type="date"
                         component={TextField}
                     />
-
-
-
                     
                     <button type="submit" disabled={isSubmitting}>
                         Submit

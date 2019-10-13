@@ -19,7 +19,6 @@ export const StateRouterRender: React.FC<IStateRouteRender> =  ({}) => {
     
     const currentComponent = (route:string) =>{
 
-        return <UserForm />;
         switch(route){
             case '/':
                 return <ProductsContainer />;
