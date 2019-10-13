@@ -68,11 +68,11 @@ export default function ProductsContainer() {
           Asegura tu {imeiDevice.Model && imeiDevice.Model.Name}, 32GB
       </Grid>
       <Grid container={true} spacing={2}>
-          <Product />
-
-          <Product />
-
-          <Product />
+          {
+            imeiDevice.Plans &&
+            imeiDevice.Plans.map( (product, i) => <Product product={product} key={`_p${i}`} /> )
+          }
+          
       </Grid>
       
     </>
