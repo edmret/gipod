@@ -12,6 +12,9 @@ const Theme = createMyTheme({
       dark: '#222222',
       main: '#3F3F3F',
       contrastText: '#556566'
+    },
+    background: {
+        paper: 'rgb(240, 251, 254)'
     }
   },
   additionalColors: {

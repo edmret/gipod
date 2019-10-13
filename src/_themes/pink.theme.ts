@@ -6,7 +6,10 @@ import pink from '@material-ui/core/colors/pink';
 const pinkTheme = createMyTheme({
     palette: {
         primary: pink,
-        secondary: lime
+        secondary: lime,
+        background: {
+            paper: 'rgb(240, 251, 254)'
+        }
     },
     additionalColors: {
         successColor: '#03fc88' 
