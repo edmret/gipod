@@ -47,9 +47,7 @@ const Product: React.FC<IProduct> =  ({product}) => {
     const currency = "USD";
 
     const montly = (product.TotalPremiumValue * selectedMethod.Factor) / selectedMethod.Months;
-
     
-
     return (
         <Grid item={true}>
             <Card className={classes.card}>

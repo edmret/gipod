@@ -1,26 +1,30 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import './App.css';
-import ProductsContainer from './product/ProductsContainer';
 import Container from '@material-ui/core/Container';
 import { MuiThemeProvider } from '@material-ui/core/styles';
 
 import PurpleTheme from './_themes/purple.theme';
 import PinkTheme from './_themes/pink.theme';
 
-import { StateProvider, useStateValue } from './stores/Store';
+import { StateProvider, DonWidgetState } from './stores/Store';
 import {reducer} from './reducers/reducer';
 
+import { StateRouterRender } from './_stateRouter/routerRender';
 
-import { ProductService } from './product/services/product.service';
+import {IRoute} from './routes';
+
+import ProductsContainer from './product/ProductsContainer'
 
 
-
-const initialState = {
-  imeiDevice: {}
+const initialState:DonWidgetState = {
+  imeiDevice: {},
+  currentRoute: '/'
 };
 
 
 const App: React.FC = () => {
+
+
 
   //TODO: make a switchable theme
   const [theme, setTheme] = React.useState(PurpleTheme);
@@ -29,7 +33,7 @@ const App: React.FC = () => {
     <StateProvider initialState={initialState} reducer={reducer}>
       <MuiThemeProvider theme={theme}>
         <Container>
-            <ProductsContainer />
+            <StateRouterRender />
         </Container>
       </MuiThemeProvider>
     </StateProvider>

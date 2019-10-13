@@ -1,16 +1,11 @@
 import React, {createContext, useContext, useReducer, Dispatch} from 'react';
 
-interface DonWidgetState {
-    imeiDevice?: any
+export interface DonWidgetState {
+    imeiDevice?: any,
+    currentRoute?: string
 }
 
-interface IStateProvider {
-    reducer: (prevState: DonWidgetState, action: Dispatch<any>) => DonWidgetState,
-    initialState: DonWidgetState,
-    children: React.ReactNode
-}
-
-export const StateContext = createContext({} as DonWidgetState);
+export const StateContext = createContext({currentRoute: '/'} as DonWidgetState);
 
 export const StateProvider= ( {reducer, initialState, children} ) => (
   <StateContext.Provider value={useReducer(reducer, initialState) as DonWidgetState}>
