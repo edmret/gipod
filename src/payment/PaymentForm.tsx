@@ -18,6 +18,12 @@ const useStyles = makeStyles((theme:Theme) => (
         marginLeft: theme.spacing(1),
         marginRight: theme.spacing(1),
         width: 200
+      },
+      buttonNext:{
+          marginLeft: theme.spacing(4)
+      },
+      button:{
+          width:100
       }
     }
   ));
@@ -53,7 +59,7 @@ export const PaymentForm = () => {
             }) => (
                 <form onSubmit={handleSubmit}>
                     {errors.FirstName && touched.FirstName && errors.FirstName}
-                    
+
                     <Field
                         name="FirstName"
                         label="First Name"
@@ -63,16 +69,16 @@ export const PaymentForm = () => {
                     />
 
                     <StateLink href="address-form">
-                        <Button variant="contained" color="primary">
-                            Previous Step
+                        <Button variant="contained" color="primary"  className={classes.button}>
+                            Previous
                         </Button>
                     </StateLink>
                     <StateLink href="success-payment">
-                        <Button variant="contained" color="primary">
-                            Send All your Information
+                        <Button variant="contained" color="primary" className={`${classes.buttonNext} ${classes.button}`}>
+                            ISSUE
                         </Button>
                     </StateLink>
-                    
+
                 </form>
             )}
             </Formik>

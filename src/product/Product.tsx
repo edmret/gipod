@@ -86,7 +86,7 @@ const Product: React.FC<IProduct> =  ({product}) => {
                             product.PlanCoverages.Coverages.map( (coverage, index) =>
                                 (<li key={`_coverage${index}`}>
                                     <PhoneAndroidIcon className={classes.icon} />
-                                        {coverage.Name}
+                                        {coverage.Title}
                                 </li>))
                         }
                     </ul>
@@ -99,7 +99,7 @@ const Product: React.FC<IProduct> =  ({product}) => {
                                 Comprar
                             </Button>
                         </StateLink>
-                        
+
                     </Grid>
                 </CardContent>
             </Card>

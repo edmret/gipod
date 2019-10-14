@@ -37,11 +37,11 @@ const useStyles = makeStyles((theme:Theme) => (
       label: '64GB',
     }
   ];
-  
+
   function valuetext(value) {
     return `${value}°C`;
   }
-  
+
   function valueLabelFormat(value) {
     return marks.findIndex(mark => mark.value === value) + 1;
   }
@@ -74,7 +74,7 @@ export const DeviceInfoForm = () => {
             }) => (
                 <form onSubmit={handleSubmit}>
                     {errors.FirstName && touched.FirstName && errors.FirstName}
-                    
+
                     <Field
                         name="FirstName"
                         label="IMEI"
@@ -98,7 +98,7 @@ export const DeviceInfoForm = () => {
 
                     <StateLink href="/">
                         <Button variant="contained" color="primary">
-                            Protect My SmarthPhone
+                            Continue
                         </Button>
                     </StateLink>
 
