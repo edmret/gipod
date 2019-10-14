@@ -6,9 +6,8 @@ import * as serviceWorker from './serviceWorker';
 
 
 
-
-
-window['CHUBB_API_RENDER'] = () => {
+window['CHUBB_API_RENDER'] = (config = {}) => {
+    window['CHUBB_API_CONFIG'] = config;
     ReactDOM.render(<App />, document.getElementById('chubb_partner_widget'));
 };
 
