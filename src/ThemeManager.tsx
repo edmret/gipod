@@ -26,25 +26,29 @@ export const ThemeManager: React.FC = () => {
         setTheme(theme);
     };
 
+    //69, 77, 174
+
+    const updateThemeFromSnapshot = snapshot => {
+        const config = snapshot.val();
+
+        let cssString = config.css || config;
+        cssString = cssString.replace('"{', '{');
+        cssString = cssString.replace('}"', '}');
+        
+        const css = JSON.parse(cssString);
+        setThemeConfig(css);
+    };
+
 
     useEffect(
         () => {
 
             const configC = window['CHUBB_API_CONFIG'];
-            const profileRef = fire.database().ref('config').child(`"${configC.appId}"`);
+            const profileRef = fire.database().ref('config').child(`${configC.appId}`);
 
-            profileRef.once('value').then(snapshot => {
-                const config = snapshot.val();
-                config.css = config.css.replace('"{', '{');
-                config.css = config.css.replace('}"', '}');
-                
-                const css = JSON.parse(config.css);
-                setThemeConfig(css);
-            });
+            profileRef.once('value').then(snapshot => updateThemeFromSnapshot(snapshot));
 
-            profileRef.on("child_changed", snapshot => {
-                console.log("the snapshot", snapshot.val());
-            });
+            profileRef.on("child_changed", (snapshot) => updateThemeFromSnapshot(snapshot));
         }, []
     );
 
