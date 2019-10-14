@@ -12,7 +12,9 @@ export interface DonWidgetState {
     imeiDevice?: any,
     currentRoute?: string,
     userInfo?: IUserInfo,
-    deviceInfo?: any
+    deviceInfo?: any,
+    sponsorConfig?: any,
+    appID?: string
 }
 
 export const StateContext = createContext({currentRoute: '/'} as DonWidgetState);
