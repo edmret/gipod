@@ -18,6 +18,12 @@ const useStyles = makeStyles((theme:Theme) => (
         marginLeft: theme.spacing(1),
         marginRight: theme.spacing(1),
         width: 200
+      },
+      buttonNext:{
+          marginLeft: theme.spacing(4)
+      },
+      button:{
+          width:100
       }
     }
   ));
@@ -93,14 +99,15 @@ export const UserForm = () => {
                         margin="normal"
                     />
 
+                    <br/>
                     <StateLink href="/">
-                        <Button variant="contained" color="primary">
-                            Previous Step
+                        <Button variant="contained" color="primary" className={classes.button}>
+                            Previous
                         </Button>
                     </StateLink>
                     <StateLink href="address-form">
-                        <Button variant="contained" color="primary">
-                            Next Step
+                        <Button variant="contained" color="primary" className={`${classes.buttonNext} ${classes.button}`}>
+                            Next
                         </Button>
                     </StateLink>
                 </form>
