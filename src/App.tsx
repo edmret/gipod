@@ -21,7 +21,7 @@ const initialState:DonWidgetState = {
 
 
 const App: React.FC = () => {
-  
+
   return (
     <StateProvider initialState={initialState} reducer={reducer}>
       <ThemeManager />

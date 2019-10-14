@@ -39,36 +39,13 @@ export default function ProductsContainer() {
       );
     }, []
   );
-
-  //TODO: switch this logic to calculate positions based on criteria
-  const marks = [
-    {
-      value: 0,
-      label: '32GB',
-    },
-    {
-      value: 50,
-      label: '64GB',
-    },
-    {
-      value: 100,
-      label: '128GB',
-    },
-  ];
-
-
   
-  //todo mad an iteration for this
   return (
-    <>
-      <Grid container={true} spacing={2}>
-          {
+    <Grid container spacing={3} justify="center">
+        {
             imeiDevice.Plans &&
             imeiDevice.Plans.map( (product, i) => <Product product={product} key={`_p${i}`} /> )
-          }
-          
-      </Grid>
-      
-    </>
+        }
+    </Grid>
   );
 }

@@ -4,7 +4,7 @@ import { Theme } from '@material-ui/core';
 
 const useStyles = makeStyles(({ palette, spacing, additionalColors }: Theme) => ({
     content:{
-        background: palette.background.paper,
+        background: palette.primary.light,
         textAlign: "center"
     },
     header: {
@@ -43,15 +43,20 @@ const useStyles = makeStyles(({ palette, spacing, additionalColors }: Theme) => 
     },
 
     price: {
-        color: palette.primary.main
+        color: palette.primary.main,
+        marginTop: 35,
+        marginBottom: 35,
+        textAlign: "center",
+        fontSize: 65
     },
 
     splitPrice: {
-        color: palette.secondary.dark
+        color: palette.secondary.dark,
+        fontSize: 14
     },
 
     card: {
-        maxWidth: 270,
+        
     },
 
     listTitle: {
@@ -63,7 +68,7 @@ const useStyles = makeStyles(({ palette, spacing, additionalColors }: Theme) => 
     includedList: {
         listStyle: "none",
         marginLeft: 0,
-        padding: 0,
+        padding: "0 20px",
         textAlign: "left",
         display: "flex",
         flexDirection: "column",
@@ -74,7 +79,8 @@ const useStyles = makeStyles(({ palette, spacing, additionalColors }: Theme) => 
             alignItems: 'center',
             alignSelf: 'flex-start',
             margin: "3px 0"
-        }
+        },
+        color: palette.secondary.light
     },
 
     detaiLink: {
@@ -84,6 +90,15 @@ const useStyles = makeStyles(({ palette, spacing, additionalColors }: Theme) => 
 
     icon: {
         color: additionalColors.successColor
+    },
+
+    perMonth: {
+        fontSize: 30
+    },
+
+    planSelectionButton: {
+        width: '96%',
+        margin: '2%'
     }
 
 }));
