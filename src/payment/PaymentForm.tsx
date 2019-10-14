@@ -2,7 +2,7 @@ import React from 'react';
 
 import {useStateValue} from '../stores/Store';
 import {makeStyles} from '@material-ui/styles';
-import {Theme} from '@material-ui/core';
+import {Theme, Grid} from '@material-ui/core';
 import { Formik, Field, Form } from 'formik';
 import { TextField } from 'formik-material-ui';
 import {Button} from '@material-ui/core';
@@ -15,16 +15,20 @@ const useStyles = makeStyles((theme:Theme) => (
         display: 'flex',
         flexWrap: 'wrap'
       },
+      cardFieldWrap: {
+        paddingBottom: theme.spacing(2)
+      },
+      secondaryButton:{
+        color: "#FFF"
+      },
       field: {
         marginLeft: theme.spacing(1),
-        marginRight: theme.spacing(1),
-        width: 200
+        marginRight: theme.spacing(1)
       },
       buttonNext:{
           marginLeft: theme.spacing(4)
       },
       button:{
-          width:100
       }
     }
   ));
@@ -58,26 +62,30 @@ export const PaymentForm = () => {
                 isSubmitting,
                 /* and other goodies */
             }) => (
-                <form onSubmit={handleSubmit}>
-
-                    <CreditCardInput
-                        cardNumberInputProps={{ onChange: handleChange }}
-                        cardExpiryInputProps={{ onChange: handleChange }}
-                        cardCVCInputProps={{ value: values.cvc, onChange: handleChange }}
-                        fieldClassName="input"
-                    />
-
-                    <StateLink href="address-form">
-                        <Button variant="contained" color="primary"  className={classes.button}>
-                            Previous
-                        </Button>
-                    </StateLink>
-                    <StateLink href="success-payment">
-                        <Button variant="contained" color="primary" className={`${classes.buttonNext} ${classes.button}`}>
-                            ISSUE
-                        </Button>
-                    </StateLink>
-
+                <form onSubmit={handleSubmit} className={classes.container}>
+                    <Grid container={true} direction="row" spacing={2} className={classes.cardFieldWrap}>
+                        <Grid item>
+                            <CreditCardInput
+                                cardNumberInputProps={{ onChange: handleChange }}
+                                cardExpiryInputProps={{ onChange: handleChange }}
+                                cardCVCInputProps={{ value: values.cvc, onChange: handleChange }}
+                                fieldClassName="input"
+                            />
+                        </Grid>
+                        
+                    </Grid>
+                    <Grid container>
+                        <StateLink href="address-form">
+                            <Button variant="contained" color="secondary"  className={classes.secondaryButton}>
+                                Previous
+                            </Button>
+                        </StateLink>
+                        <StateLink href="success-payment">
+                            <Button variant="contained" color="primary" className={`${classes.buttonNext} ${classes.button}`}>
+                                Finsh Payment
+                            </Button>
+                        </StateLink>
+                    </Grid>
                 </form>
             )}
             </Formik>

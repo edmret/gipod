@@ -16,14 +16,13 @@ const useStyles = makeStyles((theme:Theme) => (
       },
       field: {
         marginLeft: theme.spacing(1),
-        marginRight: theme.spacing(1),
-        width: 200
+        marginRight: theme.spacing(1)
       },
       buttonNext:{
           marginLeft: theme.spacing(4)
       },
       button:{
-          width:100
+
       }
     }
   ));
@@ -68,7 +67,7 @@ export const AddressForm = () => {
                         margin="normal"
                     />
 
-                    <StateLink href="address-form">
+                    <StateLink href="user-data">
                         <Button variant="contained" color="primary" className={classes.button}>
                             Previous
                         </Button>

@@ -1,8 +1,8 @@
 import React from 'react';
 
 import {useStateValue} from '../stores/Store';
-import {makeStyles} from '@material-ui/styles';
-import {Theme} from '@material-ui/core';
+import {makeStyles, createGenerateClassName} from '@material-ui/styles';
+import {Theme, Grid} from '@material-ui/core';
 import { Formik, Field, Form } from 'formik';
 import { TextField } from 'formik-material-ui';
 import {Button} from '@material-ui/core';
@@ -16,14 +16,17 @@ const useStyles = makeStyles((theme:Theme) => (
       },
       field: {
         marginLeft: theme.spacing(1),
-        marginRight: theme.spacing(1),
-        width: 200
+        marginRight: theme.spacing(1)
       },
       buttonNext:{
-          marginLeft: theme.spacing(4)
+          marginLeft: theme.spacing(4),
+          minWidth: "10rem"
       },
-      button:{
-          width:100
+      secondaryButton:{
+        color: "#FFF"
+      },
+      wrapperButton: {
+          paddingTop: theme.spacing(2)
       }
     }
   ));
@@ -57,59 +60,86 @@ export const UserForm = () => {
                 isSubmitting,
                 /* and other goodies */
             }) => (
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit} className={classes.container}>
                     {errors.FirstName && touched.FirstName && errors.FirstName}
-                    <Field
-                        name="FirstName"
-                        label="First Name"
-                        type="text"
-                        component={TextField}
-                        margin="normal"
-                    />
 
-                    <Field
-                        name="LastName"
-                        label="Last Name"
-                        type="text"
-                        component={TextField}
-                        margin="normal"
-                    />
+                    <Grid container={true} spacing={2}>
+                        <Grid item>
+                            <Field
+                                name="FirstName"
+                                label="First Name"
+                                type="text"
+                                component={TextField}
+                                margin="normal"
+                            />
+                        </Grid>
 
-                    <Field
-                        name="Email"
-                        label="Email"
-                        type="email"
-                        component={TextField}
-                        margin="normal"
-                    />
+                        <Grid item>
+                            <Field
+                                name="LastName"
+                                label="Last Name"
+                                type="text"
+                                component={TextField}
+                                margin="normal"
+                            />
+                        </Grid>
 
-                    <Field
-                        name="Phone"
-                        label="Phone"
-                        type="text"
-                        component={TextField}
-                        margin="normal"
-                    />
+                        <Grid item>
+                            <Field
+                                name="Email"
+                                label="Email"
+                                type="email"
+                                component={TextField}
+                                margin="normal"
+                            />
+                        </Grid>
+                        
+                    </Grid>
 
-                    <Field
-                        name="BirthDate"
-                        label="BirthDate"
-                        type="date"
-                        component={TextField}
-                        margin="normal"
-                    />
+                    <Grid container={true} spacing={2}>
+                        <Grid item>
+                            <Field
+                                name="Phone"
+                                label="Phone"
+                                type="text"
+                                component={TextField}
+                                margin="normal"
+                            />
+                        </Grid>
+                        <Grid item>
+                            <Field
+                                name="BirthDate"
+                                label="BirthDate"
+                                type="date"
+                                component={TextField}
+                                margin="normal"
+                                InputLabelProps={{
+                                    shrink: true,
+                                }}
+                            />
+                        </Grid>
+                    </Grid>
 
-                    <br/>
-                    <StateLink href="/">
-                        <Button variant="contained" color="primary" className={classes.button}>
-                            Previous
-                        </Button>
-                    </StateLink>
-                    <StateLink href="address-form">
-                        <Button variant="contained" color="primary" className={`${classes.buttonNext} ${classes.button}`}>
-                            Next
-                        </Button>
-                    </StateLink>
+                        
+                    <Grid container spacing={2} className={classes.wrapperButton}>
+
+                        <Grid item>
+                            <StateLink href="/">
+                                <Button variant="contained" color="secondary" className={classes.secondaryButton}>
+                                    Previous
+                                </Button>
+                            </StateLink>
+                            <StateLink href="address-form">
+                                <Button variant="contained" color="primary" className={`${classes.buttonNext}`}>
+                                    Next
+                                </Button>
+                            </StateLink>
+                        </Grid>
+
+                    </Grid>
+
+                    
+                    
                 </form>
             )}
             </Formik>
