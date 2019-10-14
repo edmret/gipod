@@ -6,7 +6,8 @@ import {Theme} from '@material-ui/core';
 import { Formik, Field, Form } from 'formik';
 import { TextField } from 'formik-material-ui';
 import {Button} from '@material-ui/core';
-import {StateLink} from '../_stateRouter/routerRender'
+import {StateLink} from '../_stateRouter/routerRender';
+import CreditCardInput from 'react-credit-card-input';
 
 const useStyles = makeStyles((theme:Theme) => (
     {
@@ -36,7 +37,7 @@ export const PaymentForm = () => {
     return React.useMemo(
         () => (
         <Formik
-            initialValues={{ ...userInfo }}
+            initialValues={{ cardNumber:'', expiry: '', cvc: '' }}
             validate={values => {
                 return {};
             }}
@@ -58,14 +59,12 @@ export const PaymentForm = () => {
                 /* and other goodies */
             }) => (
                 <form onSubmit={handleSubmit}>
-                    {errors.FirstName && touched.FirstName && errors.FirstName}
 
-                    <Field
-                        name="FirstName"
-                        label="First Name"
-                        type="text"
-                        component={TextField}
-                        margin="normal"
+                    <CreditCardInput
+                        cardNumberInputProps={{ onChange: handleChange }}
+                        cardExpiryInputProps={{ onChange: handleChange }}
+                        cardCVCInputProps={{ value: values.cvc, onChange: handleChange }}
+                        fieldClassName="input"
                     />
 
                     <StateLink href="address-form">
